@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Child from './parentToChild/child'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    state ={
+        title:'placeholder title'
+    }
+    changeTheWorld = (newTitle) => {
+        this.setState({title:newTitle});
+    }
+    render(){
+     return (
+        <div className="App">
+            <Child doWhatever={this.changeTheWorld.bind(this, 'new world')} title={this.state.title}/>
+        </div>
+     );
+    }
 }
-
 export default App;
