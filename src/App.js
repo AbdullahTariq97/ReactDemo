@@ -4,15 +4,17 @@ import Child from './parentToChild/child'
 
 class App extends Component {
     state ={
-        title:'placeholder title'
+        status:'On',
+        isOn:true
     }
-    changeTheWorld = (newTitle) => {
-        this.setState({title:newTitle});
+    switch = () => {
+        const newStatus = this.state.isOn ? 'Off' : 'On';
+        this.setState({status:newStatus, isOn:!this.state.isOn});
     }
     render(){
      return (
         <div className="App">
-            <Child doWhatever={this.changeTheWorld.bind(this, 'new world')} title={this.state.title}/>
+            <Child changeStatus={this.switch.bind(this)} status={this.state.status}/>
         </div>
      );
     }
